@@ -1,43 +1,91 @@
 package App;
 
-public class GameMethod {
+import java.util.Random;
 
-	public static String getWinner(String user, String computer) {
+public class GameMethod {
+	static int countComputer = 0;
+	static int countUser = 0;
+	static int countDraw = 0;
+	
+	public static String getComputerInput () {
+	
+		Random rand = new Random(); 
+		int n = rand.nextInt(3);
+		n +=1;
+		if (n==1) {
+			String computerInput = ComputerInput.ROCK.toString(); 
+			return computerInput;
+		}
+		else if (n==2) {
+			String computerInput = ComputerInput.PAPER.toString(); 
+			return computerInput;
+		}
+		else if (n==3) {
+			String computerInput = ComputerInput.SCISSORS.toString();  
+			return computerInput;
+		}
+		
+		
+		
+		return null;
+	}
+
+	public static String getWinner(String user, String computerInput) {
+		
+		
 		boolean userRock = user.equals("rock");
 		boolean userPaper = user.equals("paper");
 		boolean userScissors = user.equals("scissors");
-		boolean computerRock = computer.equals("rock");
-		boolean computerPaper = computer.equals("paper");
-		boolean computerScissors = computer.equals("scissors");
+		boolean computerRock = computerInput.equals("ROCK");
+		boolean computerPaper = computerInput.equals("PAPER");
+		boolean computerScissors = computerInput.equals("SCISSORS");
 		
 		if (userRock && computerPaper) {
-			return "Computer wins!";
+			String result = "Computer wins!";
+			countComputer +=1;
+			return result; 
 		}
 		else if (userRock && computerRock){
-			return "Draw!";
+			String result = "Draw!";
+			countDraw +=1;
+			return result;
 		}
 		else if (userRock && computerScissors) {
-			return "User wins!";
+			String result = "User wins!";
+			countUser +=1;
+			return result;
 		}
 		else if (userPaper && computerScissors) {
-			return "Computer wins!";
+			String result = "Computer wins!";
+			countComputer +=1;
+			return result;
 		} 
 		else if (userPaper && computerRock) {
-			return "User wins!";
+			String result = "User wins!";
+			countUser +=1;
+			return result;
 		}
 		else if (userPaper && computerPaper) {
-			return "Draw!";
+			String result = "Draw!";
+			countDraw +=1;
+			return result;
 		}
 		else if (userScissors && computerScissors) {
-			return "Draw!";
+			String result = "Draw!" ;
+			countDraw +=1;
+			return result;
 		}
 		else if (userScissors && computerRock) {
-			return "Computer wins!";
+			String result = "Computer wins!";
+			countComputer +=1;
+			return result;
 		}
 		else if(userScissors && computerPaper) {
-			return "User wins!";
+			String result = "User wins!";
+			countUser +=1;
+			return result;
 		} 
-		return null;
+		return null; 
 
 }
 }
